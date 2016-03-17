@@ -1,0 +1,23 @@
+<form>
+	<label>Name:</label>
+	<input type="text" ng-model="vm.newList.name" />
+	<button ng-click="vm.add()">Add</button>
+</form>
+
+<p>
+	<label>Buscar:</label>
+	<input type="text" ng-model="searchText" />
+</p>
+
+<p>
+	<label>Lista</label>
+</p>
+
+<ul>
+    <li ng-repeat="item in vm.list | filter: searchText">
+        <p>
+        	{{item.name}}
+        	<button ng-click="vm.remove(item)">X</button>
+        </p>
+    </li>
+</ul>

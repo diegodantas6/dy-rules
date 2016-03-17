@@ -1,3 +1,14 @@
-<body ng-app="rules">
-    <div ng-include src="'client/pages/main.html'"></div>
+<head>
+	<base href="/">
+</head>
+
+<body ng-app="rules" ng-strict-di="">
+
+	<login-buttons></login-buttons>
+
+	<h3><a href="list">List</a></h3>
+	<h3><a href="todo">Todo</a></h3>
+
+	<div ui-view=""></div>
+
 </body>

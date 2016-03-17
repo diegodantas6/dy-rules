@@ -1,0 +1,24 @@
+<form>
+	<select ng-model="vm.newList.listId">
+		<option 
+			ng-repeat="listItem in vm.list"
+			value="{{listItem._id}}">
+			{{listItem.name}}
+		</option>
+	</select>
+
+	<label>Name:</label>
+	<input type="text" ng-model="vm.newList.text"/>
+
+	<button ng-click="vm.add()">Add</button>
+</form>
+
+<label>Lista</label>
+<ul>
+    <li ng-repeat="item in vm.todos">
+        <p>
+        	{{item.listId}} - {{item.text}}
+        	<button ng-click="vm.remove(item)">X</button>
+        </p>
+    </li>
+</ul>

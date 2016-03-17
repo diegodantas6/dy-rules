@@ -1,7 +1,7 @@
-angular.module('rules').directive('listDirective', function() {
+angular.module('rules').directive('todoDirective', function() {
 	return {
 		restrict: 'E',
-		templateUrl: 'client/pages/list.html',
+		templateUrl: 'client/pages/todo.html',
 		controllerAs: 'vm',
 		controller: function ($scope, $reactive) {
 
@@ -9,35 +9,27 @@ angular.module('rules').directive('listDirective', function() {
 
 			this.subscribe('lists');
 
+			this.subscribe('todos');
+
 			this.helpers({
 				list: () => {
 					return Lists.find({});
+				},
+				todos: () => {
+					return Todos.find({});
 				}
 			});
 		    
 			this.newList = {};
 
 			this.add = () => {
-				
-				if(!Meteor.user())
-					throw new Meteor.Error("not-authorized by App");
-
-				this.newList.owner = Meteor.user()._id;
-				Lists.insert(this.newList);
+				Todos.insert(this.newList);
 
 				this.newList = {};
 			};
 
 			this.remove = (item) => {
-				// remove details first
-				/*
 				Todos.remove({
-					listId: item._id
-				});
-				*/
-
-				// remove master
-				Lists.remove({
 					_id: item._id
 				});
 			};
