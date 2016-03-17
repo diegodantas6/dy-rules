@@ -15,7 +15,14 @@
 
 	<div class="container">
 
-		<login-buttons class="pull-right"></login-buttons>
+		<!-- <login-buttons class="pull-right"></login-buttons> -->
+
+		<a href="login" class="pull-right" ng-hide="vm.isLoggedIn">Login</a>
+		<a href="register" class="pull-right" ng-hide="vm.isLoggedIn">Register</a>
+
+		<span class="pull-right" ng-show="vm.isLoggedIn">{{ vm.currentUser | displayName }}</span>
+		
+
 
 		<div ui-view=""></div>
 
