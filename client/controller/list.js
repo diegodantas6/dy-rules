@@ -30,7 +30,17 @@ angular.module('rules').directive('listDirective', function() {
 
 			this.add = () => {
 
-				Meteor.call('addList', this.newList);
+				Meteor.call('addList', this.newList, function(error, result) {
+
+					if (error) {
+						// show reason error when name is 'aaa'
+						alert(error.reason);
+					} else {
+						// log id of the object list saved
+						console.log(result);
+					}
+
+				});
 
 				this.newList = {};
 			};

@@ -8,9 +8,15 @@ Meteor.methods({
 
 	addList: function(list) {
 
-		list.owner = Meteor.user()._id;
+		if (list.name === "aaa") {
 
-		Lists.insert(list);
+			throw new Meteor.Error( 500, 'There was an error processing your request' );
+
+		} else {
+			list.owner = Meteor.user()._id;
+
+			return Lists.insert(list);
+		}
 
 	},
 
