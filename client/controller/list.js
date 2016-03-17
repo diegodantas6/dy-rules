@@ -12,6 +12,17 @@ angular.module('rules').directive('listDirective', function() {
 			this.helpers({
 				list: () => {
 					return Lists.find({});
+
+					// return Meteor.call('getList');
+
+					// Meteor.call('getList', function(e, s) {
+					// 	if (e) {
+					// 		console.log(e);
+					// 	} else {
+					// 		// return s;
+					// 		Session.set('data', s);
+					// 	}
+					// });
 				}
 			});
 		    

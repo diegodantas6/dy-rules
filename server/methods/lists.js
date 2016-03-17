@@ -1,5 +1,11 @@
 Meteor.methods({
 
+	getList: function() {
+
+		return Lists.find({});
+
+	},
+
 	addList: function(list) {
 
 		list.owner = Meteor.user()._id;
