@@ -1,7 +1,7 @@
 angular.module('rules').directive('todoDirective', function() {
 	return {
 		restrict: 'E',
-		templateUrl: 'client/pages/todo.html',
+		templateUrl: 'client/view/todo.html',
 		controllerAs: 'vm',
 		controller: function ($scope, $reactive) {
 

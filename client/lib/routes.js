@@ -14,7 +14,7 @@ angular.module('rules').config(function ($urlRouterProvider, $stateProvider, $lo
 	$stateProvider
 		.state('home', {
 			url: '/home',
-			templateUrl: 'client/pages/index.html'
+			templateUrl: 'client/view/index.html'
 		})
 		.state('list', {
 			url: '/list',
