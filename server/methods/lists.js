@@ -1,6 +1,14 @@
 Meteor.methods({
 
-	removeList : function(listId) {
+	addList: function(list) {
+
+		list.owner = Meteor.user()._id;
+
+		Lists.insert(list);
+
+	},
+
+	removeList: function(listId) {
 
 		Todos.remove({
 			listId: listId

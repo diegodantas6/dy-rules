@@ -20,18 +20,20 @@ angular.module('rules').directive('todoDirective', function() {
 				}
 			});
 		    
-			this.newList = {};
+			this.newTodo = {};
 
 			this.add = () => {
-				Todos.insert(this.newList);
 
-				this.newList = {};
+				Meteor.call('addTodo', this.newTodo);
+				
+				this.newTodo = {};
+
 			};
 
 			this.remove = (item) => {
-				Todos.remove({
-					_id: item._id
-				});
+
+				Meteor.call('removeTodo', item._id);
+
 			};
 
 		}

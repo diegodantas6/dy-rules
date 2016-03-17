@@ -19,6 +19,7 @@ angular.module('rules').directive('listDirective', function() {
 
 			this.add = () => {
 				
+				/*
 				if(!Meteor.user()) {
 					alert('Faz o login ai troxa');
 					return;
@@ -27,6 +28,11 @@ angular.module('rules').directive('listDirective', function() {
 
 				this.newList.owner = Meteor.user()._id;
 				Lists.insert(this.newList);
+
+				this.newList = {};
+				*/
+
+				Meteor.call('addList', this.newList);
 
 				this.newList = {};
 			};
