@@ -1,14 +1,3 @@
-<head>
-	<base href="/">
-</head>
+<h1>Home</h1>
 
-<body ng-app="rules" ng-strict-di="">
-
-	<login-buttons></login-buttons>
-
-	<h3><a href="list">List</a></h3>
-	<h3><a href="todo">Todo</a></h3>
-
-	<div ui-view=""></div>
-
-</body>
+<div ng-if="currentUser" ng-include="'client/pages/menu.html'"></div>

@@ -19,8 +19,11 @@ angular.module('rules').directive('listDirective', function() {
 
 			this.add = () => {
 				
-				if(!Meteor.user())
-					throw new Meteor.Error("not-authorized by App");
+				if(!Meteor.user()) {
+					alert('Faz o login ai troxa');
+					return;
+					//throw new Meteor.Error("not-authorized by App");
+				}	
 
 				this.newList.owner = Meteor.user()._id;
 				Lists.insert(this.newList);
@@ -29,17 +32,9 @@ angular.module('rules').directive('listDirective', function() {
 			};
 
 			this.remove = (item) => {
-				// remove details first
-				/*
-				Todos.remove({
-					listId: item._id
-				});
-				*/
 
-				// remove master
-				Lists.remove({
-					_id: item._id
-				});
+				Meteor.call('removeList', item._id);
+				
 			};
 
 		}
