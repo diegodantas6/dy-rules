@@ -8,13 +8,32 @@ var resolveLogin = {
 	}
 };
 
+var resolveLogout = {
+	currentUser: ($q) => {
+		return $q.reject('LOGOUT');
+	}
+};
+
 angular.module('rules').config(function ($urlRouterProvider, $stateProvider, $locationProvider) {
 	$locationProvider.html5Mode(true);
 
 	$stateProvider
 		.state('home', {
 			url: '/home',
-			templateUrl: 'client/view/index.html'
+			// template: '<home-directive></home-directive>'
+			templateUrl: 'client/view/home.html'
+		})
+		.state('login', {
+			url: '/login',
+			template: '<login-directive></login-directive>'
+		})
+		.state('register', {
+			url: '/register',
+			template: '<register-directive></register-directive>'
+		})
+		.state('logout', {
+			url: '/logout',
+			resolve: resolveLogout
 		})
 		.state('list', {
 			url: '/list',
@@ -31,9 +50,21 @@ angular.module('rules').config(function ($urlRouterProvider, $stateProvider, $lo
 
 }).run(function ($rootScope, $state) {
 	$rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
+		
 		if (error === 'AUTH_REQUIRED') {
-			console.log('errro');
+
+			// console.log('login required');
+
 			$state.go('home');
+		
+		} else if (error === 'LOGOUT') {
+
+			// console.log('logout');
+
+			$state.go('home');
+
+			Accounts.logout();
+
 		}
 	});
 });

@@ -15,14 +15,16 @@
 
 	<div class="container">
 
-		<!-- <login-buttons class="pull-right"></login-buttons> -->
+		<!--
+		<login-buttons class="pull-right"></login-buttons> 
+		-->
 
-		<a href="login" class="pull-right" ng-hide="vm.isLoggedIn">Login</a>
-		<a href="register" class="pull-right" ng-hide="vm.isLoggedIn">Register</a>
-
-		<span class="pull-right" ng-show="vm.isLoggedIn">{{ vm.currentUser | displayName }}</span>
-		
-
+		<ul class="pull-right">
+			<li>{{ currentUser.emails[0].address }}</li>
+			<li ng-hide="currentUser"><a href="login">Login</a></li>
+			<li ng-hide="currentUser"><a href="register">Register</a></li>
+			<li ng-show="currentUser"><a href="logout">Logout</a></li>
+		</ul>
 
 		<div ui-view=""></div>
 

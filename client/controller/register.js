@@ -1,7 +1,7 @@
-angular.module('rules').directive('loginDirective', function() {
+angular.module('rules').directive('registerDirective', function() {
 	return {
 		restrict: 'E',
-		templateUrl: 'client/view/login.html',
+		templateUrl: 'client/view/register.html',
 		controllerAs: 'vm',
 		controller: function ($scope, $reactive, $state) {
 
@@ -12,9 +12,9 @@ angular.module('rules').directive('loginDirective', function() {
 				password: ''
 			};
 
-			this.login = () => {
+			this.register = () => {
 
-				Meteor.loginWithPassword(this.credentials.email, this.credentials.password, (error) => {
+				Accounts.createUser(this.credentials, (error) => {
 					if (error) {
 						alert(error.reason);
 					} else {
