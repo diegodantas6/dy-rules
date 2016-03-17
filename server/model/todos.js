@@ -1,3 +1,9 @@
+Meteor.publish("todos", function () {
+
+    return Todos.find({});
+
+});
+
 Meteor.methods({
 
 	addTodo: function(todo) {
